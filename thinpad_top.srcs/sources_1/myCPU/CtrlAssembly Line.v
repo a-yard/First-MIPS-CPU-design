@@ -72,7 +72,7 @@ module CtrlAssemblyLine(
                 end
             else
                 begin
-                    if(MEM_vaild==1'b0 && WB_vaild==1'b0 && EX_vaild==1'b0)
+                    if(MEM_vaild==1'b0 && EX_vaild==1'b0)
                         begin
                             flag = 1'b0;
                         end
