@@ -70,6 +70,10 @@ module ID_EX(
     input wire in_ID_EX_in_pc_sel,
     output reg out_ID_EX_in_pc_sel,
 
+
+    input wire[31:0] in_ID_EX_DM_addr_arbitration,
+    output reg[31:0] out_ID_EX_DM_addr_arbitration,
+    
     input wire in_ID_EX_clear,
 
 
@@ -77,7 +81,7 @@ module ID_EX(
 
     output reg ID_EX_valid
     );
-   // reg ID_EX_valid;
+   // reg ID_EX_valid;DM_addr_arbitration
     reg ID_EX_ready_go=1'b1;
     assign ID_EX_allowin=(!ID_EX_valid || ID_EX_ready_go && EX_MEM_allowin);//&&cpu_no_stop;
     assign ID_EX_to_EX_MEM_valid = ID_EX_valid && ID_EX_ready_go;//&&cpu_no_stop;
@@ -102,6 +106,8 @@ module ID_EX(
                     out_ID_EX_rd_addr<=5'b0;
                     out_ID_EX_jal_addr<=32'b0;
                     out_ID_EX_in_pc_sel<=1'b0;
+
+                    out_ID_EX_DM_addr_arbitration<=32'b0;
                 end
             else if(ID_EX_allowin)
                 begin
@@ -127,6 +133,8 @@ module ID_EX(
 
                     out_ID_EX_jal_addr<=in_ID_EX_jal_addr;
                     out_ID_EX_in_pc_sel<=in_ID_EX_in_pc_sel;
+
+                    out_ID_EX_DM_addr_arbitration<=in_ID_EX_DM_addr_arbitration;
                 end
             // if(IF_ID_to_ID_EX_valid && ID_EX_allowin || in_ID_EX_clear)
             //     begin

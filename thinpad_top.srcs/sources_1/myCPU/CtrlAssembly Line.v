@@ -46,6 +46,8 @@ module CtrlAssemblyLine(
 
     output reg IF_ID_clear,
     input wire in_pc_sel,
+    input wire out_ID_EX_in_pc_sel,
+    output wire IF_in_pc_sel,
     input wire [31:0]pr_directives,
     input wire [31:0] EX_directives,
     input wire [31:0] MEM_directives,
@@ -53,7 +55,8 @@ module CtrlAssemblyLine(
     input wire [31:0] im_directives,
     output wire pc_stop,
     input wire pc_stop_for_AccessStorage,
-    input wire cpu_no_stop
+    input wire cpu_no_stop,
+    input wire [31:0]DM_addr
     );
     wire in_lb ;
     assign in_lb = (EX_directives[31:26]==6'b100000 || MEM_directives[31:26]==6'b100000 || WB_directives[31:26]==6'b100000)?1'b1:1'b0;
@@ -64,6 +67,12 @@ module CtrlAssemblyLine(
     assign in_sb = (EX_directives[31:26]==6'b101000  || MEM_directives[31:26]==6'b101000 || WB_directives[31:26]==6'b101000)?1'b1:1'b0;
    assign pc_stop =(flag==1'b1 || cpu_no_stop==1'b0 )?1'b1:1'b0;
     
+    wire in_base_addr;
+    assign in_base_addr=(DM_addr>=32'h80000000&&DM_addr<=32'h803fffff)?1'b1:1'b0;
+
+    assign IF_in_pc_sel = (pc_stop==1'b1)?in_pc_sel:out_ID_EX_in_pc_sel;
+
+
     always@(*)
         begin
             if(rst==1'b1)
@@ -74,9 +83,10 @@ module CtrlAssemblyLine(
                 begin
                     if(MEM_vaild==1'b0 && EX_vaild==1'b0)
                         begin
-                            flag = 1'b0;
-                        end
-                    else if(EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000 || EX_directives[31:26]==6'b101011 || EX_directives[31:26]==6'b101000|| pc_stop_for_AccessStorage==1'b1)
+                            flag = 1'b0;            //SB 101000 SW 101011 
+                                                    //LB 100000 LW 100011
+                        end      //EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000 || EX_directives[31:26]==6'b101011 || EX_directives[31:26]==6'b101000                                         //&&in_base_addr==1'b1
+                    else if(((EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000)&&((rs_addr==EX_rd_addr && rs_en == 1'b1)||(rt_addr==EX_rd_addr && rt_en == 1'b1))) || (EX_directives[31:26]==6'b101011  ) || pc_stop_for_AccessStorage==1'b1)
                         begin
                             flag = 1'b1;
                         end
@@ -106,7 +116,7 @@ module CtrlAssemblyLine(
                 begin
                     if(pc_stop==1'b0)
                         begin
-                            if(in_pc_sel==1'b1)
+                            if(out_ID_EX_in_pc_sel==1'b1)
                         begin
                             IF_ID_clear=1'b1;
                         end
@@ -134,8 +144,8 @@ module CtrlAssemblyLine(
                 begin
                    
                     if(rs_en == 1'b1 && rs_addr!=5'b0)
-                        begin
-                        //      if(pc_stop==1'b1)
+                        begin                                   //rs_addr==EX_rd_addr && rs_en == 1'b1
+                        //      if(pc_stop==1'b1)               //rt_addr==EX_rd_addr && rt_en == 1'b1
                         //     begin
                         //         alu_in1_sel=2'b00;
                         //     end

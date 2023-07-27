@@ -107,7 +107,7 @@ module myMIPS(
     wire [1:0]CtrlAssemblyLinealu_in2_sel;
 
     reg [3:0] AccessStorage_manner;
-
+    wire IF_in_pc_sel;
 
  (*mark_debug = "true"*)   wire out_ID_EX_in_pc_sel;
     wire [31:0]out_ID_EX_jal_addr;
@@ -179,8 +179,9 @@ module myMIPS(
 //in_rd_data
 //out_EX_MEM_alu_out
 
-
-    
+    wire [31:0] DM_addr_arbitration;
+    assign DM_addr_arbitration = IMM_DATA + AssemblyLine_rs;
+    wire [31:0]out_ID_EX_DM_addr_arbitration;
     ID_EX ID_EXobj(.clk(clk),.rst(rst),.IF_ID_to_ID_EX_valid(IF_ID_to_ID_EX_valid),.EX_MEM_allowin(EX_MEM_allowin),.ID_EX_to_EX_MEM_valid(ID_EX_to_EX_MEM_valid),
     .ID_EX_allowin(ID_EX_allowin),.in_ID_EX_EXIMM(IMM_DATA),.out_ID_EX_EXIMM(out_ID_EX_EXIMM),.in_ID_EX_rs(sel_rs_out),.out_ID_EX_rs(out_ID_EX_rs),
     .in_ID_EX_rt(AssemblyLine_rt),.out_ID_EX_rt(out_ID_EX_rt),.in_ID_EX_directives(out_IF_ID_directives),.out_ID_EX_directives(out_ID_EX_directives),
@@ -190,7 +191,7 @@ module myMIPS(
     .out_ID_EX_alu_option(out_ID_EX_alu_option),.in_ID_EX_rd_addr(rd_addr),.out_ID_EX_rd_addr(out_ID_EX_rd_addr),
     .cpu_no_stop(cpu_no_stop),.ID_EX_valid(ID_EX_valid),
     .in_ID_EX_in_pc_sel(in_pc_sel),.out_ID_EX_in_pc_sel(out_ID_EX_in_pc_sel),.in_ID_EX_jal_addr(jal_addr),.out_ID_EX_jal_addr(out_ID_EX_jal_addr),
-    .in_ID_EX_clear(IF_ID_clear)
+    .in_ID_EX_clear(IF_ID_clear),.in_ID_EX_DM_addr_arbitration(DM_addr_arbitration),.out_ID_EX_DM_addr_arbitration(out_ID_EX_DM_addr_arbitration)
     );
 
     
@@ -312,11 +313,12 @@ module myMIPS(
     
     CtrlAssemblyLine CtrlAssemblyLineobj(
     .MEM_rd_en(out_EX_MEM_in_rd_en),.MEM_rd_addr(out_EX_MEM_rd_addr),.WB_rd_en(out_MEM_WB_rd_en),.WB_rd_addr(out_MEM_WB_rd_addr),.EX_rd_en(out_ID_EX_rd_en),.EX_rd_addr(out_ID_EX_rd_addr),
-    .alu_in1_sel(CtrlAssemblyLinealu_in1_sel),.alu_in2_sel(CtrlAssemblyLinealu_in2_sel),.IF_ID_clear(IF_ID_clear),.in_pc_sel(out_ID_EX_in_pc_sel),.pr_directives(out_ID_EX_directives),
+    .alu_in1_sel(CtrlAssemblyLinealu_in1_sel),.alu_in2_sel(CtrlAssemblyLinealu_in2_sel),.IF_ID_clear(IF_ID_clear),.pr_directives(out_ID_EX_directives),
     .rst(rst),.rs_addr(rs_addr),.rt_addr(out_IF_ID_directives[20:16]),.rs_en(rs_en),.rt_en(rt_en),
     .pc_stop(pc_stop),.pc_stop_for_AccessStorage(pc_stop_for_AccessStorage),.clk(clk),.EX_directives(out_ID_EX_directives),
     .MEM_directives(out_EX_MEM_directives),.cpu_no_stop(cpu_no_stop),.WB_directives(out_MEM_WB_directives),
-    .EX_vaild(ID_EX_valid),.MEM_vaild(EX_MEM_valid),.WB_vaild(MEM_WB_valid),.im_directives(out_IF_ID_directives)
+    .EX_vaild(ID_EX_valid),.MEM_vaild(EX_MEM_valid),.WB_vaild(MEM_WB_valid),.im_directives(out_IF_ID_directives),
+    .in_pc_sel(in_pc_sel),.out_ID_EX_in_pc_sel(out_ID_EX_in_pc_sel),.IF_in_pc_sel(IF_in_pc_sel),.DM_addr(out_ID_EX_DM_addr_arbitration)
     );
     // wire  [4:0]rs_my;
     // assign rs_my=out_IF_ID_directives[25:21];
