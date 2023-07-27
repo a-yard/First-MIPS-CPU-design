@@ -1,0 +1,106 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:40:23 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 13960
+License: Customer
+
+Current time: 	Thu Jul 27 21:17:04 CST 2023
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 20
+
+Screen size: 1920x1080
+Screen resolution (DPI): 125
+Available screens: 1
+Available disk space: 436 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=15
+
+Java version: 	9.0.4 64-bit
+Java home: 	E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/tps/win64/jre9.0.4
+Java executable location: 	E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	wsp
+User home directory: C:/Users/wsp
+User working directory: C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: E:/ToolSoftware/Vivado2019.2/Vivado
+HDI_APPROOT: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2
+RDI_DATADIR: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/data
+RDI_BINDIR: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/bin
+
+Vivado preferences file location: C:/Users/wsp/AppData/Roaming/Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: C:/Users/wsp/AppData/Roaming/Xilinx/Vivado/2019.2/
+Vivado layouts directory: C:/Users/wsp/AppData/Roaming/Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044/vivado.log
+Vivado journal file location: 	C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044/vivado.jou
+Engine tmp dir: 	C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044/.Xil/Vivado-13960-DESKTOP-FQAI2HO
+
+Xilinx Environment Variables
+----------------------------
+XILINX: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/ids_lite/ISE
+XILINX_DSP: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2
+XILINX_SDK: E:/ToolSoftware/Vivado2019.2/Vitis/2019.2
+XILINX_VITIS: E:/ToolSoftware/Vivado2019.2/Vitis/2019.2
+XILINX_VIVADO: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2
+XILINX_VIVADO_HLS: E:/ToolSoftware/Vivado2019.2/Vivado/2019.2
+
+
+GUI allocated memory:	203 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 874 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 101 MB (+103183kb) [00:00:05]
+// [Engine Memory]: 680 MB (+561306kb) [00:00:05]
+// bB (cr):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\wsp\Desktop\nscscc2023_gitlab\2023044\thinpad_top.xpr. Version: Vivado v2019.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044/thinpad_top.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: LOAD_FEATURE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,074 MB. GUI used memory: 50 MB. Current time: 7/27/23, 9:17:06 PM CST
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 1,074 MB (+378083kb) [00:00:10]
+// [GUI Memory]: 109 MB (+3323kb) [00:00:11]
+// WARNING: HEventQueue.dispatchEvent() is taking  2042 ms.
+// Tcl Message: open_project C:/Users/wsp/Desktop/nscscc2023_gitlab/2023044/thinpad_top.xpr 
+// Tcl Message: INFO: [Project 1-313] Project file moved from '/root/thinpad_top' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/ToolSoftware/Vivado2019.2/Vivado/2019.2/data/ip'. 
