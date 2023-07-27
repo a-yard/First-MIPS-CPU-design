@@ -86,7 +86,7 @@ module CtrlAssemblyLine(
                             flag = 1'b0;            //SB 101000 SW 101011 
                                                     //LB 100000 LW 100011
                         end      //EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000 || EX_directives[31:26]==6'b101011 || EX_directives[31:26]==6'b101000                                         //&&in_base_addr==1'b1
-                    else if(((EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000)&&((rs_addr==EX_rd_addr && rs_en == 1'b1)||(rt_addr==EX_rd_addr && rt_en == 1'b1))) || (EX_directives[31:26]==6'b101011  ) || pc_stop_for_AccessStorage==1'b1)
+                    else if(((EX_directives[31:26]==6'b100011 || EX_directives[31:26]==6'b100000)&&((rs_addr==EX_rd_addr && rs_en == 1'b1)||(rt_addr==EX_rd_addr && rt_en == 1'b1))) || (EX_directives[31:26]==6'b101011 && in_base_addr==1'b1 ) || pc_stop_for_AccessStorage==1'b1)
                         begin
                             flag = 1'b1;
                         end
