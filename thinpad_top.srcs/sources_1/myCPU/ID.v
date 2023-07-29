@@ -292,14 +292,15 @@ module ID(
                                 DM_W=1'b0;
                                 alu_option=6'b000000;
                                 rd_addr=5'b0;
-                                if(Compare_result==1'b1)
-                                    begin
-                                        in_pc_sel=1'b1;
-                                    end
-                                else    
-                                    begin
-                                        in_pc_sel=1'b0;
-                                    end
+                                in_pc_sel = Compare_result;
+                                // if(Compare_result==1'b1)
+                                //     begin
+                                //         in_pc_sel=1'b1;
+                                //     end
+                                // else    
+                                //     begin
+                                //         in_pc_sel=1'b0;
+                                //     end
                             end
                     //beq
                         6'b000100:
@@ -314,14 +315,15 @@ module ID(
                                 DM_W=1'b0;
                                 alu_option=6'b000000;
                                 rd_addr=5'b0;
-                                if(Compare_result==1'b1)
-                                    begin
-                                        in_pc_sel=1'b1;
-                                    end
-                                else    
-                                    begin
-                                        in_pc_sel=1'b0;
-                                    end
+                                in_pc_sel = Compare_result;
+                                // if(Compare_result==1'b1)
+                                //     begin
+                                //         in_pc_sel=1'b1;
+                                //     end
+                                // else    
+                                //     begin
+                                //         in_pc_sel=1'b0;
+                                //     end
                             end
                     //bgtz
                     6'b000111:
@@ -336,14 +338,15 @@ module ID(
                                 DM_W=1'b0;
                                 alu_option=6'b000000;
                                 rd_addr=5'b0;
-                                if(Compare_result==1'b1)
-                                    begin
-                                        in_pc_sel=1'b1;
-                                    end
-                                else    
-                                    begin
-                                        in_pc_sel=1'b0;
-                                    end
+                                in_pc_sel = Compare_result;
+                                // if(Compare_result==1'b1)
+                                //     begin
+                                //         in_pc_sel=1'b1;
+                                //     end
+                                // else    
+                                //     begin
+                                //         in_pc_sel=1'b0;
+                                //     end
                             end
                     //BLTZ
                         6'b000001:
@@ -358,14 +361,15 @@ module ID(
                                 DM_W=1'b0;
                                 alu_option=6'b000000;
                                 rd_addr=5'b0;
-                                if(Compare_result==1'b1)
-                                    begin
-                                        in_pc_sel=1'b1;
-                                    end
-                                else    
-                                    begin
-                                        in_pc_sel=1'b0;
-                                    end
+                                in_pc_sel = Compare_result;
+                                // if(Compare_result==1'b1)
+                                //     begin
+                                //         in_pc_sel=1'b1;
+                                //     end
+                                // else    
+                                //     begin
+                                //         in_pc_sel=1'b0;
+                                //     end
                             end
                     //lui
                         6'b001111:

@@ -119,7 +119,8 @@ module myMIPS(
     (*mark_debug = "true"*)wire MEM_WB_valid;
 
     NPC NPCobj(.nowpc(IM_addr),.nextpc(NPC_nextpc),.rst(rst));
-
+//    wire [31:0]readly_jal_addr;
+//    assign readly_jal_addr = (out_ID_EX_in_pc_sel==1'b1)?out_ID_EX_jal_addr:jal_addr;
     mux2_1 inpc_sel_obj(.rst(rst),.in1(NPC_nextpc),.in2(out_ID_EX_jal_addr),.sel(out_ID_EX_in_pc_sel),.out(inpc_sel_out));
 
 
@@ -181,6 +182,9 @@ module myMIPS(
     wire [31:0] DM_addr_arbitration;
     assign DM_addr_arbitration = IMM_DATA + AssemblyLine_rs;
     wire [31:0]out_ID_EX_DM_addr_arbitration;
+
+    // wire in_ID_EX_in_pc_sel;
+    // assign in_ID_EX_in_pc_sel = (in_pc_sel==1'b1 && pc_stop==1'b1)?1'b1:1'b0;
 
     ID_EX ID_EXobj(.clk(clk),.rst(rst),.IF_ID_to_ID_EX_valid(IF_ID_to_ID_EX_valid),.EX_MEM_allowin(EX_MEM_allowin),.ID_EX_to_EX_MEM_valid(ID_EX_to_EX_MEM_valid),
     .ID_EX_allowin(ID_EX_allowin),.in_ID_EX_EXIMM(IMM_DATA),.out_ID_EX_EXIMM(out_ID_EX_EXIMM),.in_ID_EX_rs(sel_rs_out),.out_ID_EX_rs(out_ID_EX_rs),
