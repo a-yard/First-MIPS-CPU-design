@@ -176,12 +176,12 @@ module myMIPS(
     );
     wire [31:0] sel_rs_out;
     mux2_1 sel_rs(.rst(rst),.in1(AssemblyLine_rs),.in2(IMM_DATA),.out(sel_rs_out),.sel(sel_rs_sel));
-//in_rd_data
-//out_EX_MEM_alu_out
+
 
     wire [31:0] DM_addr_arbitration;
     assign DM_addr_arbitration = IMM_DATA + AssemblyLine_rs;
     wire [31:0]out_ID_EX_DM_addr_arbitration;
+
     ID_EX ID_EXobj(.clk(clk),.rst(rst),.IF_ID_to_ID_EX_valid(IF_ID_to_ID_EX_valid),.EX_MEM_allowin(EX_MEM_allowin),.ID_EX_to_EX_MEM_valid(ID_EX_to_EX_MEM_valid),
     .ID_EX_allowin(ID_EX_allowin),.in_ID_EX_EXIMM(IMM_DATA),.out_ID_EX_EXIMM(out_ID_EX_EXIMM),.in_ID_EX_rs(sel_rs_out),.out_ID_EX_rs(out_ID_EX_rs),
     .in_ID_EX_rt(AssemblyLine_rt),.out_ID_EX_rt(out_ID_EX_rt),.in_ID_EX_directives(out_IF_ID_directives),.out_ID_EX_directives(out_ID_EX_directives),
@@ -189,9 +189,9 @@ module myMIPS(
     .in_ID_EX_alu_in2_se1(alu_in2_se1),.out_ID_EX_alu_in2_se1(out_ID_EX_alu_in2_se1),.in_ID_EX_in_rd_sel(in_rd_sel),.out_ID_EX_in_rd_sel(out_ID_EX_in_rd_sel),
     .in_ID_EX_DM_R(DM_R),.out_ID_EX_DM_R(out_ID_EX_DM_R),.in_ID_EX_DM_W(DM_W),.out_ID_EX_DM_W(out_ID_EX_DM_W),.in_ID_EX_alu_option(alu_option),
     .out_ID_EX_alu_option(out_ID_EX_alu_option),.in_ID_EX_rd_addr(rd_addr),.out_ID_EX_rd_addr(out_ID_EX_rd_addr),
-    .cpu_no_stop(cpu_no_stop),.ID_EX_valid(ID_EX_valid),
+    .ID_EX_valid(ID_EX_valid),
     .in_ID_EX_in_pc_sel(in_pc_sel),.out_ID_EX_in_pc_sel(out_ID_EX_in_pc_sel),.in_ID_EX_jal_addr(jal_addr),.out_ID_EX_jal_addr(out_ID_EX_jal_addr),
-    .in_ID_EX_clear(IF_ID_clear),.in_ID_EX_DM_addr_arbitration(DM_addr_arbitration),.out_ID_EX_DM_addr_arbitration(out_ID_EX_DM_addr_arbitration)
+    .in_ID_EX_DM_addr_arbitration(DM_addr_arbitration),.out_ID_EX_DM_addr_arbitration(out_ID_EX_DM_addr_arbitration)
     );
 
     
@@ -272,7 +272,7 @@ module myMIPS(
     assign DM_DATA_out=DM_out;
     assign IN_DM = out_EX_MEM_rt;
     assign cpu_EX_MEM_AccessStorage_manner = out_EX_MEM_AccessStorage_manner;
-    //assign AccessStorage_valid = EX_MEM_valid;
+//    assign AccessStorage_valid = (EX_MEM_to_MEM_WB_valid==1'b1 && (out_EX_MEM_DM_R==1'b1 || out_EX_MEM_DM_W==1'b1))?1'b1:1'b0;
     always@(*)
         begin
             if(rst==1'b1)
@@ -320,8 +320,5 @@ module myMIPS(
     .EX_vaild(ID_EX_valid),.MEM_vaild(EX_MEM_valid),.WB_vaild(MEM_WB_valid),.im_directives(out_IF_ID_directives),
     .in_pc_sel(in_pc_sel),.out_ID_EX_in_pc_sel(out_ID_EX_in_pc_sel),.IF_in_pc_sel(IF_in_pc_sel),.DM_addr(out_ID_EX_DM_addr_arbitration)
     );
-    // wire  [4:0]rs_my;
-    // assign rs_my=out_IF_ID_directives[25:21];
-    // wire [4:0]rt_my;
-    // assign rt_my = out_IF_ID_directives[20:16];
+
 endmodule
