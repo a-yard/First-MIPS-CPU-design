@@ -1,56 +1,56 @@
 `default_nettype none
 
 module thinpad_top(
-    input wire clk_50M,           //50MHz Ê±ÖÓÊäÈë
-    input wire clk_11M0592,       //11.0592MHz Ê±ÖÓÊäÈë£¨±¸ÓÃ£¬¿É²»ÓÃ£©
+    input wire clk_50M,           //50MHz Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    input wire clk_11M0592,       //11.0592MHz Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ë£¨ï¿½ï¿½ï¿½Ã£ï¿½ï¿½É²ï¿½ï¿½Ã£ï¿½
 
-    input wire clock_btn,         //BTN5ÊÖ¶¯Ê±ÖÓ°´Å¥??????¹Ø£¬´øÏû¶¶µçÂ·£¬°´ÏÂÊ±Îª1
-    input wire reset_btn,         //BTN6ÊÖ¶¯¸´Î»°´Å¥??????¹Ø£¬´øÏû¶¶µçÂ·£¬°´ÏÂÊ±Îª1
+    input wire clock_btn,         //BTN5ï¿½Ö¶ï¿½Ê±ï¿½Ó°ï¿½Å¥??????ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Îª1
+    input wire reset_btn,         //BTN6ï¿½Ö¶ï¿½ï¿½ï¿½Î»ï¿½ï¿½Å¥??????ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Îª1
 
-    input  wire[3:0]  touch_btn,  //BTN1~BTN4£¬°´Å¥¿ª¹Ø£¬°´ÏÂÊ±Îª1
-    input  wire[31:0] dip_sw,     //32Î»²¦Âë¿ª¹Ø£¬²¦µ½"ON"Ê±??????1
-    output wire[15:0] leds,       //16Î»LED£¬Êä³öÊ±1µãÁÁ
-    output wire[7:0]  dpy0,       //ÊýÂë¹ÜµÍÎ»ÐÅºÅ£¬°üÀ¨Ð¡Êýµã£¬Êä³ö1µãÁÁ
-    output wire[7:0]  dpy1,       //ÊýÂë¹Ü¸ßÎ»ÐÅºÅ£¬°üÀ¨Ð¡Êýµã£¬Êä³ö1µãÁÁ
+    input  wire[3:0]  touch_btn,  //BTN1~BTN4ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Îª1
+    input  wire[31:0] dip_sw,     //32Î»ï¿½ï¿½ï¿½ë¿ªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½"ON"Ê±??????1
+    output wire[15:0] leds,       //16Î»LEDï¿½ï¿½ï¿½ï¿½ï¿½Ê±1ï¿½ï¿½ï¿½ï¿½
+    output wire[7:0]  dpy0,       //ï¿½ï¿½ï¿½ï¿½Üµï¿½Î»ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
+    output wire[7:0]  dpy1,       //ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½Î»ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½
 
-    //BaseRAMÐÅºÅ
-    inout wire[31:0] base_ram_data,  //BaseRAMÊý¾Ý£¬µÍ8Î»ÓëCPLD´®¿Ú¿ØÖÆÆ÷¹²??????
-    output wire[19:0] base_ram_addr, //BaseRAMµØÖ·
-    output wire[3:0] base_ram_be_n,  //BaseRAM×Ö½ÚÊ¹ÄÜ£¬µÍÓÐÐ§¡£Èç¹û²»Ê¹ÓÃ×Ö½ÚÊ¹ÄÜ£¬Çë±£³Ö??????0
-    output wire base_ram_ce_n,       //BaseRAMÆ¬???£¬µÍÓÐ??????
-    output wire base_ram_oe_n,       //BaseRAM¶ÁÊ¹ÄÜ£¬µÍÓÐ??????
-    output wire base_ram_we_n,       //BaseRAMÐ´Ê¹ÄÜ£¬µÍÓÐ??????
+    //BaseRAMï¿½Åºï¿½
+    inout wire[31:0] base_ram_data,  //BaseRAMï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½8Î»ï¿½ï¿½CPLDï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire[19:0] base_ram_addr, //BaseRAMï¿½ï¿½Ö·
+    output wire[3:0] base_ram_be_n,  //BaseRAMï¿½Ö½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ö½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ë±£ï¿½ï¿½??????0
+    output wire base_ram_ce_n,       //BaseRAMÆ¬???ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire base_ram_oe_n,       //BaseRAMï¿½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire base_ram_we_n,       //BaseRAMÐ´Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½??????
 
-    //ExtRAMÐÅºÅ
-    inout wire[31:0] ext_ram_data,  //ExtRAMÊý¾Ý
-    output wire[19:0] ext_ram_addr, //ExtRAMµØÖ·
-    output wire[3:0] ext_ram_be_n,  //ExtRAM×Ö½ÚÊ¹ÄÜ£¬µÍÓÐÐ§¡£Èç¹û²»Ê¹ÓÃ×Ö½ÚÊ¹ÄÜ£¬Çë±£³Ö??????0
-    output wire ext_ram_ce_n,       //ExtRAMÆ¬???£¬µÍÓÐ??????
-    output wire ext_ram_oe_n,       //ExtRAM¶ÁÊ¹ÄÜ£¬µÍÓÐ??????
-    output wire ext_ram_we_n,       //ExtRAMÐ´Ê¹ÄÜ£¬µÍÓÐ??????
+    //ExtRAMï¿½Åºï¿½
+    inout wire[31:0] ext_ram_data,  //ExtRAMï¿½ï¿½ï¿½ï¿½
+    output wire[19:0] ext_ram_addr, //ExtRAMï¿½ï¿½Ö·
+    output wire[3:0] ext_ram_be_n,  //ExtRAMï¿½Ö½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ö½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ë±£ï¿½ï¿½??????0
+    output wire ext_ram_ce_n,       //ExtRAMÆ¬???ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire ext_ram_oe_n,       //ExtRAMï¿½ï¿½Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire ext_ram_we_n,       //ExtRAMÐ´Ê¹ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½??????
 
-    //Ö±Á¬´®¿ÚÐÅºÅ
-    output wire txd,  //Ö±Á¬´®¿Ú·¢???¶Ë
-    input  wire rxd,  //Ö±Á¬´®¿Ú½ÓÊÕ??????
+    //Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½
+    output wire txd,  //Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½???ï¿½ï¿½
+    input  wire rxd,  //Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½??????
 
-    //Flash´æ´¢Æ÷ÐÅºÅ£¬²Î??? JS28F640 Ð¾Æ¬ÊÖ²á
-    output wire [22:0]flash_a,      //FlashµØÖ·£¬a0½öÔÚ8bitÄ£Ê½ÓÐÐ§??????16bitÄ£Ê½ÎÞÒâ??????
-    inout  wire [15:0]flash_d,      //FlashÊý¾Ý
-    output wire flash_rp_n,         //Flash¸´Î»ÐÅºÅ£¬µÍÓÐÐ§
-    output wire flash_vpen,         //FlashÐ´±£»¤ÐÅºÅ£¬µÍµçÆ½Ê±²»ÄÜ²Á³ý¡¢ÉÕ??????
-    output wire flash_ce_n,         //FlashÆ¬???ÐÅºÅ£¬µÍÓÐ??????
-    output wire flash_oe_n,         //Flash¶ÁÊ¹ÄÜÐÅºÅ£¬µÍÓÐ??????
-    output wire flash_we_n,         //FlashÐ´Ê¹ÄÜÐÅºÅ£¬µÍÓÐ??????
-    output wire flash_byte_n,       //Flash 8bitÄ£Ê½Ñ¡Ôñ£¬µÍÓÐÐ§¡£ÔÚÊ¹ÓÃflash??????16Î»Ä£Ê½Ê±ÇëÉè??????1
+    //Flashï¿½æ´¢ï¿½ï¿½ï¿½ÅºÅ£ï¿½ï¿½ï¿½??? JS28F640 Ð¾Æ¬ï¿½Ö²ï¿½
+    output wire [22:0]flash_a,      //Flashï¿½ï¿½Ö·ï¿½ï¿½a0ï¿½ï¿½ï¿½ï¿½8bitÄ£Ê½ï¿½ï¿½Ð§??????16bitÄ£Ê½ï¿½ï¿½ï¿½ï¿½??????
+    inout  wire [15:0]flash_d,      //Flashï¿½ï¿½ï¿½ï¿½
+    output wire flash_rp_n,         //Flashï¿½ï¿½Î»ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
+    output wire flash_vpen,         //FlashÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ÅºÅ£ï¿½ï¿½Íµï¿½Æ½Ê±ï¿½ï¿½ï¿½Ü²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire flash_ce_n,         //FlashÆ¬???ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire flash_oe_n,         //Flashï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire flash_we_n,         //FlashÐ´Ê¹ï¿½ï¿½ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire flash_byte_n,       //Flash 8bitÄ£Ê½Ñ¡ï¿½ñ£¬µï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½flash??????16Î»Ä£Ê½Ê±ï¿½ï¿½ï¿½ï¿½??????1
 
-    //Í¼ÏñÊä³öÐÅºÅ
-    output wire[2:0] video_red,    //ºìÉ«ÏñËØ??????3??????
-    output wire[2:0] video_green,  //ÂÌÉ«ÏñËØ??????3??????
-    output wire[1:0] video_blue,   //À¶É«ÏñËØ??????2??????
-    output wire video_hsync,       //ÐÐÍ¬²½£¨Ë®Æ½Í¬²½£©ÐÅ??????
-    output wire video_vsync,       //³¡Í¬²½£¨´¹Ö±Í¬²½£©ÐÅ??????
-    output wire video_clk,         //ÏñËØÊ±ÖÓÊä³ö
-    output wire video_de           //ÐÐÊý¾ÝÓÐÐ§ÐÅºÅ£¬ÓÃÓÚÇø·ÖÏûÒþ??????
+    //Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½
+    output wire[2:0] video_red,    //ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½??????3??????
+    output wire[2:0] video_green,  //ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½??????3??????
+    output wire[1:0] video_blue,   //ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½??????2??????
+    output wire video_hsync,       //ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ë®Æ½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire video_vsync,       //ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+    output wire video_clk,         //ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+    output wire video_de           //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
 );
 
 
@@ -68,40 +68,40 @@ wire locked, clk_10M, clk_20M,clk_25M,clk_30M;
 pll_example clock_gen 
  (
   // Clock in ports
-  .clk_in1(clk_50M),  // Íâ²¿Ê±ÖÓÊäÈë
+  .clk_in1(clk_50M),  // ï¿½â²¿Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   // Clock out ports
-  .clk_out1(clk_10M), // Ê±ÖÓÊä³ö1£¬ÆµÂÊÔÚIPÅäÖÃ½çÃæÖÐÉè??????
-  .clk_out2(clk_20M), // Ê±ÖÓÊä³ö2£¬ÆµÂÊÔÚIPÅäÖÃ½çÃæÖÐÉè??????
+  .clk_out1(clk_10M), // Ê±ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
+  .clk_out2(clk_20M), // Ê±ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??????
   .clk_out3(clk_25M),     
   .clk_out4(clk_30M),
   // Status and control signals
-  .reset(reset_btn), // PLL¸´Î»ÊäÈë
-  .locked(locked)    // PLLËø¶¨Ö¸Ê¾Êä³ö??????"1"±íÊ¾Ê±ÖÓÎÈ¶¨??????
-                     // ºó¼¶µçÂ·¸´Î»ÐÅºÅÓ¦µ±ÓÉËüÉú³É£¨¼ûÏÂ£©
+  .reset(reset_btn), // PLLï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½
+  .locked(locked)    // PLLï¿½ï¿½ï¿½ï¿½Ö¸Ê¾ï¿½ï¿½ï¿½??????"1"ï¿½ï¿½Ê¾Ê±ï¿½ï¿½ï¿½È¶ï¿½??????
+                     // ï¿½ó¼¶µï¿½Â·ï¿½ï¿½Î»ï¿½Åºï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½Â£ï¿½
  );
 reg reset_of_clk10M;
-// Òì²½¸´Î»£¬Í¬²½ÊÍ·Å£¬½«lockedÐÅºÅ×ªÎªºó¼¶µçÂ·µÄ¸´Î»reset_of_clk10M
+// ï¿½ì²½ï¿½ï¿½Î»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Í·Å£ï¿½ï¿½ï¿½lockedï¿½Åºï¿½×ªÎªï¿½ó¼¶µï¿½Â·ï¿½Ä¸ï¿½Î»reset_of_clk10M
 always@(posedge clk_10M or negedge locked) begin
     if(~locked) reset_of_clk10M <= 1'b1;
     else        reset_of_clk10M <= 1'b0;
 end
 
 reg reset_of_clk20M;
-// Òì²½¸´Î»£¬Í¬²½ÊÍ·Å£¬½«lockedÐÅºÅ×ªÎªºó¼¶µçÂ·µÄ¸´Î»reset_of_clk10M
+// ï¿½ì²½ï¿½ï¿½Î»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Í·Å£ï¿½ï¿½ï¿½lockedï¿½Åºï¿½×ªÎªï¿½ó¼¶µï¿½Â·ï¿½Ä¸ï¿½Î»reset_of_clk10M
 always@(posedge clk_20M or negedge locked) begin
     if(~locked) reset_of_clk20M <= 1'b1;
     else        reset_of_clk20M <= 1'b0;
 end
 
 reg reset_of_clk25M;
-// Òì²½¸´Î»£¬Í¬²½ÊÍ·Å£¬½«lockedÐÅºÅ×ªÎªºó¼¶µçÂ·µÄ¸´Î»reset_of_clk10M
+// ï¿½ì²½ï¿½ï¿½Î»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Í·Å£ï¿½ï¿½ï¿½lockedï¿½Åºï¿½×ªÎªï¿½ó¼¶µï¿½Â·ï¿½Ä¸ï¿½Î»reset_of_clk10M
 always@(posedge clk_25M or negedge locked) begin
     if(~locked) reset_of_clk25M <= 1'b1;
     else        reset_of_clk25M <= 1'b0;
 end
 
 reg reset_of_clk30M;
-// Òì²½¸´Î»£¬Í¬²½ÊÍ·Å£¬½«lockedÐÅºÅ×ªÎªºó¼¶µçÂ·µÄ¸´Î»reset_of_clk10M
+// ï¿½ì²½ï¿½ï¿½Î»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Í·Å£ï¿½ï¿½ï¿½lockedï¿½Åºï¿½×ªÎªï¿½ó¼¶µï¿½Â·ï¿½Ä¸ï¿½Î»reset_of_clk10M
 always@(posedge clk_30M or negedge locked) begin
     if(~locked) reset_of_clk30M <= 1'b1;
     else        reset_of_clk30M <= 1'b0;
@@ -137,32 +137,5 @@ AccessStorage AccessStorageobj(.base_ram_data(base_ram_data),.base_ram_addr(base
 
 
 
-
-// wire myclk_5;
-// wire mylocked;
-// mydiv_clk instance_name
-//    (
-//     // Clock out ports
-//     .clk_out1(myclk_5),     // output clk_out1
-//     // Status and control signals
-//     .reset(reset_btn), // input reset
-//     .mylocked(mylocked),       // output mylocked
-//    // Clock in ports
-//     .clk_in1(clk_50M));  
-
-// reg reset_of_clk5M;
-// // Òì²½¸´Î»£¬Í¬²½ÊÍ·Å£¬½«lockedÐÅºÅ×ªÎªºó¼¶µçÂ·µÄ¸´Î»reset_of_clk10M
-// always@(posedge myclk_5 or negedge mylocked) begin
-//     if(~mylocked) reset_of_clk5M <= 1'b1;
-//     else        reset_of_clk5M <= 1'b0;
-// end
-// always@(posedge clk_10M or posedge reset_of_clk10M) begin
-//     if(reset_of_clk10M)begin
-//         // Your Code
-//     end
-//     else begin
-//         // Your Code
-//     end
-// end
 
 endmodule
