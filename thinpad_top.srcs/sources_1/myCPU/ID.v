@@ -92,6 +92,11 @@ module ID(
                                         begin
                                             alu_option=6'b000001;
                                         end
+                                    // //subu
+                                    // 6'b100011:
+                                    //     begin
+                                    //         alu_option=6'b000010;
+                                    //     end
                                     //and
                                     6'b100100:
                                         begin
